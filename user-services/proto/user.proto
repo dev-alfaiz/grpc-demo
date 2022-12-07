@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+service UsersService {
+    rpc getUserById (RequestUser) returns (SingleResponse);
+    rpc findUserByEmail (RequestUser) returns (SingleResponse);
+}
+
+message RequestUser {
+    string id = 1;
+    string username = 2;
+    string email = 3;
+}
+
+message Error {
+    string message = 1;
+    string code =2;
+}
+
+message User {
+    string id = 1;
+    string username = 2;
+    string email = 3;
+}
+
+message SingleResponse {
+    Error error = 1;
+    User user = 2;
+}
